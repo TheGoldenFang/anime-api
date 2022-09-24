@@ -55,8 +55,15 @@ const AnimeFact = () => {
   }, [factList]);
 
   const handleSubmitClick = () => {
-    setAnimeName(ele.value);
+    setAnimeName(cleanInput(ele.value));
   };
+
+  const cleanInput = (str) => {
+    let temp = str;
+    temp = temp.split(" ").join("_").toLowerCase();
+    return temp;
+  };
+
   return (
     <React.Fragment>
       <React.Fragment>

@@ -59,7 +59,7 @@ const SpecificFact = () => {
   }, [fact]);
 
   const handleSubmitClick = () => {
-    setAnimeName(tempName.value);
+    setAnimeName(cleanInput(tempName.value));
     setFactId(tempFact.value);
   };
 
@@ -69,6 +69,12 @@ const SpecificFact = () => {
     temp =
       temp.toString().slice(0, 1).toUpperCase() +
       temp.toString().slice(1, temp.length);
+    return temp;
+  };
+
+  const cleanInput = (str) => {
+    let temp = str;
+    temp = temp.split(" ").join("_").toLowerCase();
     return temp;
   };
 
