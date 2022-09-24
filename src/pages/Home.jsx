@@ -9,7 +9,6 @@ const Home = () => {
   useEffect(() => {
     fetch("https://anime-facts-rest-api.herokuapp.com/api/v1")
       .then((resource) => {
-        console.log(resource);
         return resource.json();
       })
       .then(
@@ -27,11 +26,9 @@ const Home = () => {
   const cleanName = (x) => {
     let temp = x;
     temp = temp.toString().trim().split("_").join(" ");
-    console.log(temp);
     temp =
       temp.toString().slice(0, 1).toUpperCase() +
       temp.toString().slice(1, temp.length);
-    console.log(temp, x);
     return temp;
   };
 
@@ -43,9 +40,9 @@ const Home = () => {
     return (
       <React.Fragment>
         <h1 className="lead display-6"> HOME 🍙:</h1>
-        <table class="table table-striped">
+        <table className="table table-striped">
           <thead>
-            <tr class="table-primary">
+            <tr className="table-primary">
               <th className="display-6 text-primary">#</th>
               <th className="display-6 text-primary text-nowrap">Anime Name</th>
               <th className="display-6 text-primary text-center">Image</th>

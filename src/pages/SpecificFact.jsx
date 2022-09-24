@@ -13,40 +13,36 @@ const SpecificFact = () => {
   let tempName, tempFact;
 
   useEffect(() => {
-    console.log(url + animeName + "/" + factId);
-    fetch(url + animeName + "/" + factId)
-      .then((resource) => {
-        if (resource.status >= 400) {
-          //console.log(resource.status);
-          throw new Error("Server responds with error!");
-        }
-        console.log(resource);
-        return resource.json();
-      })
-      .then(
-        (result) => {
-          setError(null);
-          setIsLoaded(true);
-          //console.log(result);
-          setFact(result.data);
-        },
-        (error) => {
-          setIsLoaded(true);
-          setError(error);
-        }
-      );
+    if (animeName !== 0) {
+      fetch(url + animeName + "/" + factId)
+        .then((resource) => {
+          if (resource.status >= 400) {
+            //console.log(resource.status);
+            throw new Error("Server responds with error!");
+          }
+          return resource.json();
+        })
+        .then(
+          (result) => {
+            setError(null);
+            setIsLoaded(true);
+            //console.log(result);
+            setFact(result.data);
+          },
+          (error) => {
+            setIsLoaded(true);
+            setError(error);
+          }
+        );
+    }
   }, [animeName, factId]);
 
   useEffect(() => {
-    console.log(fact);
     if (error) {
-      console.log("errMsg");
       setRetState(<div>Error: {error.message}</div>);
     } else if (!isLoaded) {
-      console.log("loadMsg");
       setRetState(<div></div>);
     } else {
-      console.log("factMsg");
       setRetState(
         <React.Fragment>
           <br />
@@ -63,7 +59,6 @@ const SpecificFact = () => {
   }, [fact]);
 
   const handleSubmitClick = () => {
-    console.log("submit");
     setAnimeName(tempName.value);
     setFactId(tempFact.value);
   };
@@ -71,11 +66,9 @@ const SpecificFact = () => {
   const cleanName = (x) => {
     let temp = x;
     temp = temp.toString().trim().split("_").join(" ");
-    console.log(temp);
     temp =
       temp.toString().slice(0, 1).toUpperCase() +
       temp.toString().slice(1, temp.length);
-    console.log(temp, x);
     return temp;
   };
 

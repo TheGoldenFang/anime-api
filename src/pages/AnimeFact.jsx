@@ -11,39 +11,36 @@ const AnimeFact = () => {
   let ele;
 
   useEffect(() => {
-    console.log(url + animeName);
-    fetch(url + animeName)
-      .then((resource) => {
-        if (resource.status >= 400) {
-          console.log(resource.status);
-          throw new Error("Server responds with error!");
-        }
-        console.log(resource);
-        return resource.json();
-      })
-      .then(
-        (result) => {
-          setError(null);
-          setIsLoaded(true);
-          //console.log(result);
-          setFactList(result.data);
-        },
-        (error) => {
-          setIsLoaded(true);
-          setError(error);
-        }
-      );
+    if (animeName !== 0) {
+      fetch(url + animeName)
+        .then((resource) => {
+          if (resource.status >= 400) {
+            console.log(resource.status);
+            throw new Error("Server responds with error!");
+          }
+          return resource.json();
+        })
+        .then(
+          (result) => {
+            setError(null);
+            setIsLoaded(true);
+            //console.log(result);
+            setFactList(result.data);
+          },
+          (error) => {
+            setIsLoaded(true);
+            setError(error);
+          }
+        );
+    }
   }, [animeName]);
 
   useEffect(() => {
     if (error) {
-      console.log("errMsg");
-      setRetState(<div>Error: {error.message}</div>);
+      setRetState(<tr>Error: {error.message}</tr>);
     } else if (!isLoaded) {
-      console.log("loadMsg");
-      setRetState(<div></div>);
+      setRetState(<tr></tr>);
     } else {
-      console.log("factMsg");
       setRetState(
         factList.map((fact) => (
           <tr key={fact.fact_id}>
@@ -79,9 +76,9 @@ const AnimeFact = () => {
         </div>
       </React.Fragment>
       <hr className="my-4" />
-      <table class="table table-striped">
+      <table className="table table-striped">
         <thead>
-          <tr class="table-primary">
+          <tr className="table-primary">
             <th className="display-6 text-primary table-primary">#</th>
             <th className="display-6 text-primary">Fact</th>
           </tr>
