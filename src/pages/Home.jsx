@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import Image from "react-bootstrap/Image";
-import Table from "react-bootstrap/Table";
 
 const Home = () => {
   const [error, setError] = useState(null);

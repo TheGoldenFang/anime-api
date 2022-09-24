@@ -1,5 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
-import Table from "react-bootstrap/Table";
+import React, { useState, useEffect } from "react";
 import Button from "react-bootstrap/Button";
 
 const AnimeFact = () => {
