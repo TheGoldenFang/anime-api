@@ -6,19 +6,21 @@ https://chandan-02.github.io/anime-facts-rest-api/
 
 ### Home Page:
 
-![alt text](/anime-api/Images/Home%20page.jpg)
+![alt text](/Images/Home%20page.jpg)
 
 ### Anime Fact Page:
 
-![alt text](/anime-api/Images/Anime%20Facts%20Page.jpg)
+![alt text](/Images/Anime%20Facts%20Page.jpg)
 
 ### Specific Fact Page:
 
-![alt text](/anime-api/Images/Specific%20Facts%20Page.jpg)
+![alt text](/Images/Specific%20Facts%20Page.jpg)
 
 ### Page not Found Page:
 
-![alt text](/anime-api/Images/Page%20not%20found%20Page.jpg)
+![alt text](/Images/Page%20not%20found%20Page.jpg)
+
+Deployed site at https://classy-dolphin-65e15f.netlify.app/
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
